@@ -20,11 +20,15 @@ app.use(cookieParser());
 
 app.use(
     cors({
-        origin: ["http://localhost:3000", "http://localhost:3001"],
-        methods: ["GET", "POST", "PUT", "DELETE"],
+        origin: true,
         credentials: true,
+        methods: ["GET", "POST", "PUT", "DELETE"],
     }),
 );
+
+app.get("/", (req, res) => {
+    res.send("Zerodha Backend is Live and Running!");
+});
 
 app.post("/verify", (req, res) => {
     const token = req.cookies.token;
@@ -80,7 +84,7 @@ mongoose
     .then(() => {
         console.log("db connect");
         app.listen(PORT || 3002, () => {
-            console.log(`server ruinningon port ${PORT || 3002}`);
+            console.log(`server running on port ${PORT || 3002}`);
         });
     })
     .catch((err) => {
