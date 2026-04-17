@@ -20,7 +20,7 @@ const Menu = ({ username }) => {
 
     return (
         <div className="menu-container">
-            <a href="http://localhost:3000">
+            <a href="https://zerodha-web.vercel.app">
                 <img
                     src="/logo.png"
                     alt="Logo"
@@ -31,7 +31,7 @@ const Menu = ({ username }) => {
                 <ul>
                     <li>
                         <a
-                            href="http://localhost:3000"
+                            href="https://zerodha-web.vercel.app"
                             style={{ textDecoration: "none" }}
                         >
                             <p

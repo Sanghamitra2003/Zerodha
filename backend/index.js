@@ -6,7 +6,6 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const authRoute = require("./Routes/AuthRoute");
-
 const { HoldingsModel } = require("./models/HoldingsModel");
 const { PositionsModel } = require("./models/PositionsModel");
 const { OrdersModel } = require("./models/OrdersModel");
@@ -20,9 +19,9 @@ app.use(cookieParser());
 
 app.use(
     cors({
-        origin: ["https://zerodha-web.vercel.app"], // Yahan apna Vercel link hi daalna
+        origin: true,
         credentials: true,
-        methods: ["GET", "POST", "PUT", "DELETE"],
+        methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     }),
 );
 
@@ -32,15 +31,10 @@ app.get("/", (req, res) => {
 
 app.post("/verify", (req, res) => {
     const token = req.cookies.token;
-    if (!token) {
-        return res.json({ status: false });
-    }
+    if (!token) return res.json({ status: false });
     jwt.verify(token, TOKEN_KEY, (err, data) => {
-        if (err) {
-            return res.json({ status: false });
-        } else {
-            return res.json({ status: true, user: data.username });
-        }
+        if (err) return res.json({ status: false });
+        res.json({ status: true, user: data.username });
     });
 });
 
@@ -82,11 +76,6 @@ app.post("/newOrder", async (req, res) => {
 mongoose
     .connect(MONGO_URL)
     .then(() => {
-        console.log("db connect");
-        app.listen(PORT || 3002, () => {
-            console.log(`server running on port ${PORT || 3002}`);
-        });
+        app.listen(PORT || 3002, () => console.log("Server Running"));
     })
-    .catch((err) => {
-        console.error("DB Connection Error:", err);
-    });
+    .catch((err) => console.log(err));

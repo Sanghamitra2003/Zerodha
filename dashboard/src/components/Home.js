@@ -12,7 +12,7 @@ const Home = () => {
     useEffect(() => {
         const verifyAuth = async () => {
             if (!cookies.token) {
-                window.location.href = "http://localhost:3000/login";
+                window.location.href = "https://zerodha-web.vercel.app/login";
                 return;
             }
 
@@ -26,10 +26,11 @@ const Home = () => {
                 if (data.status) {
                     setUsername(data.user);
                 } else {
-                    window.location.href = "http://localhost:3000/login";
+                    window.location.href =
+                        "https://zerodha-web.vercel.app/login";
                 }
             } catch (err) {
-                window.location.href = "http://localhost:3000/login";
+                window.location.href = "https://zerodha-web.vercel.app/login";
             }
         };
 

@@ -2,12 +2,12 @@ const User = require("../models/UserModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
-module.exports.Signup = async (req, res, next) => {
+module.exports.Signup = async (req, res) => {
     try {
         const { email, password, username, createdAt } = req.body;
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.json({ message: "User already exists" });
+            return res.json({ message: "User already exists", success: false });
         }
         const user = await User.create({
             email,
@@ -15,7 +15,6 @@ module.exports.Signup = async (req, res, next) => {
             username,
             createdAt,
         });
-
         const token = jwt.sign(
             { id: user._id, username: user.username },
             process.env.TOKEN_KEY,
@@ -31,16 +30,15 @@ module.exports.Signup = async (req, res, next) => {
         res.status(201).json({
             message: "User signed in successfully",
             success: true,
-            user,
+            token: token,
+            user: user.username,
         });
-        next();
     } catch (error) {
-        console.error(error);
         res.status(500).json({ message: "Internal server error" });
     }
 };
 
-module.exports.Login = async (req, res, next) => {
+module.exports.Login = async (req, res) => {
     try {
         const { email, password } = req.body;
         if (!email || !password) {
@@ -48,13 +46,18 @@ module.exports.Login = async (req, res, next) => {
         }
         const user = await User.findOne({ email });
         if (!user) {
-            return res.json({ message: "Incorrect password or email" });
+            return res.json({
+                message: "Incorrect password or email",
+                success: false,
+            });
         }
         const auth = await bcrypt.compare(password, user.password);
         if (!auth) {
-            return res.json({ message: "Incorrect password or email" });
+            return res.json({
+                message: "Incorrect password or email",
+                success: false,
+            });
         }
-
         const token = jwt.sign(
             { id: user._id, username: user.username },
             process.env.TOKEN_KEY,
@@ -70,11 +73,10 @@ module.exports.Login = async (req, res, next) => {
         res.status(200).json({
             message: "User logged in successfully",
             success: true,
-            user,
+            token: token,
+            user: user.username,
         });
-        next();
     } catch (error) {
-        console.error(error);
         res.status(500).json({ message: "Internal server error" });
     }
 };
