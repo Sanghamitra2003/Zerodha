@@ -1,0 +1,108 @@
+body {
+    margin: 0;
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family:
+        source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.nav-link {
+    margin-left: 40px;
+}
+
+#supportHero {
+    background-color: rgb(56, 126, 209);
+    color: white;
+}
+
+#supportHero a {
+    color: white;
+    margin-right: 16px;
+}
+
+#supportHero div {
+    padding: 50px 0 0 0;
+}
+
+#supportWrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 150px;
+}
+
+#supportHero input {
+    padding: 20px 40px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    margin: 24px 0 24px 0;
+}
+
+/* Basic Reset */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* Form Styles (Login/Signup ) */
+.form_container {
+    background-color: #fff;
+    padding: 2rem 3rem;
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    margin: 5rem auto; /* Form ko screen ke beech mein laane ke liye */
+}
+
+.form_container > h2 {
+    margin-block: 1rem;
+    padding-block: 0.6rem;
+    color: rgba(0, 212, 255, 1);
+}
+
+.form_container > form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+}
+
+.form_container div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.form_container input {
+    border: none;
+    padding: 0.5rem;
+    border-bottom: 1px solid gray;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+/* Welcome Section Styles (Home Page ke liye) */
+.auth-header-style {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+.custom-nav-link {
+    transition: color 0.3s ease;
+}
+
+.custom-nav-link:hover {
+    color: #387ed1 !important; /* Zerodha jaisa blue color */
+}
