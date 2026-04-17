@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 const Signup = () => {
-    const navigate = useNavigate();
     const [inputValue, setInputValue] = useState({
         email: "",
         password: "",
@@ -30,7 +29,10 @@ const Signup = () => {
             if (success) {
                 localStorage.setItem("token", token);
                 toast.success(message);
-                setTimeout(() => navigate("/"), 1000);
+                setTimeout(() => {
+                    // Yahan change kiya hai: Signup ke baad seedha live dashboard
+                    window.location.href = "https://zerodha-admin.vercel.app";
+                }, 1000);
             } else {
                 toast.error(message);
             }
