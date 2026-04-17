@@ -20,13 +20,11 @@ const Login = () => {
                 { ...inputValue },
                 { withCredentials: true },
             );
-
             const { success, message, token } = data;
             if (success) {
                 localStorage.setItem("token", token);
                 toast.success(message, { position: "bottom-left" });
                 setTimeout(() => {
-                    // Yahan change kiya hai: Ab ye live dashboard par bhejega
                     window.location.href = "https://zerodha-admin.vercel.app";
                 }, 1000);
             } else {
