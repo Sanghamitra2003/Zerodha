@@ -4,11 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const Login = () => {
-    const [inputValue, setInputValue] = useState({
-        email: "",
-        password: "",
-    });
-
+    const [inputValue, setInputValue] = useState({ email: "", password: "" });
     const { email, password } = inputValue;
 
     const handleOnChange = (e) => {
@@ -26,7 +22,6 @@ const Login = () => {
             );
 
             const { success, message, token } = data;
-
             if (success) {
                 localStorage.setItem("token", token);
                 toast.success(message, { position: "bottom-left" });
