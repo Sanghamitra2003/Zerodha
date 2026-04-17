@@ -26,8 +26,9 @@ const Signup = () => {
                 { withCredentials: true },
             );
 
-            const { success, message } = data;
+            const { success, message, token } = data;
             if (success) {
+                localStorage.setItem("token", token);
                 toast.success(message);
                 setTimeout(() => navigate("/"), 1000);
             } else {

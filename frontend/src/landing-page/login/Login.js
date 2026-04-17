@@ -25,9 +25,10 @@ const Login = () => {
                 { withCredentials: true },
             );
 
-            const { success, message } = data;
+            const { success, message, token } = data;
 
             if (success) {
+                localStorage.setItem("token", token);
                 toast.success(message, { position: "bottom-left" });
                 setTimeout(() => {
                     window.location.href = "/";
@@ -36,9 +37,7 @@ const Login = () => {
                 toast.error(message, { position: "bottom-left" });
             }
         } catch (error) {
-            toast.error(error.response?.data?.message || "Login failed", {
-                position: "bottom-left",
-            });
+            toast.error("Login failed", { position: "bottom-left" });
         }
     };
 
