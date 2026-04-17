@@ -23,9 +23,11 @@ module.exports.Signup = async (req, res, next) => {
         );
 
         res.cookie("token", token, {
-            withCredentials: true,
             httpOnly: false,
+            secure: true,
+            sameSite: "none",
         });
+
         res.status(201).json({
             message: "User signed in successfully",
             success: true,
@@ -34,6 +36,7 @@ module.exports.Signup = async (req, res, next) => {
         next();
     } catch (error) {
         console.error(error);
+        res.status(500).json({ message: "Internal server error" });
     }
 };
 
@@ -59,9 +62,11 @@ module.exports.Login = async (req, res, next) => {
         );
 
         res.cookie("token", token, {
-            withCredentials: true,
             httpOnly: false,
+            secure: true,
+            sameSite: "none",
         });
+
         res.status(200).json({
             message: "User logged in successfully",
             success: true,
@@ -70,5 +75,6 @@ module.exports.Login = async (req, res, next) => {
         next();
     } catch (error) {
         console.error(error);
+        res.status(500).json({ message: "Internal server error" });
     }
 };

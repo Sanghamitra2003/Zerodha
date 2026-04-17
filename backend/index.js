@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 app.use(
     cors({
-        origin: true,
+        origin: ["https://zerodha-web.vercel.app"], // Yahan apna Vercel link hi daalna
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE"],
     }),
