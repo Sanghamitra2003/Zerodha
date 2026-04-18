@@ -83,31 +83,14 @@ function Navbar() {
                                 </Link>
                             </li>
                         ) : (
-                            <>
-                                <li className="nav-item ms-2">
-                                    <button
-                                        className="btn btn-primary text-white px-3 py-2"
-                                        onClick={() =>
-                                            (window.location.href = `https://zerodha-admin.vercel.app?token=${token}`)
-                                        }
-                                        style={{
-                                            borderRadius: "4px",
-                                            fontSize: "0.95rem",
-                                            fontWeight: "500",
-                                        }}
-                                    >
-                                        Dashboard
-                                    </button>
-                                </li>
-                                <li className="nav-item ms-3">
-                                    <button
-                                        className="btn text-danger fw-bold border-0 bg-transparent"
-                                        onClick={handleLogout}
-                                    >
-                                        Logout
-                                    </button>
-                                </li>
-                            </>
+                            <li className="nav-item ms-3">
+                                <button
+                                    className="btn text-danger fw-bold border-0 bg-transparent"
+                                    onClick={handleLogout}
+                                >
+                                    Logout
+                                </button>
+                            </li>
                         )}
                     </ul>
                 </div>
