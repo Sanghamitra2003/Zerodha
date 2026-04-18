@@ -1,8 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function Hero({ isLoggedIn }) {
+function Hero() {
     const navigate = useNavigate();
+    const token = localStorage.getItem("token");
 
     return (
         <div className="container p-5 mb-5">
@@ -18,9 +19,9 @@ function Hero({ isLoggedIn }) {
                     funds, ETFs, bonds, and more.
                 </p>
 
-                {isLoggedIn ? (
+                {token ? (
                     <a
-                        href="http://localhost:3001"
+                        href={`https://zerodha-admin.vercel.app?token=${token}`}
                         className="btn btn-primary p-2 fs-5 mb-5"
                         style={{ width: "20%", margin: "0 auto" }}
                     >

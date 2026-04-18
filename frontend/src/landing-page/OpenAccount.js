@@ -1,10 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
 
 function OpenAccount() {
     const navigate = useNavigate();
-    const [cookies] = useCookies(["token"]);
+    const token = localStorage.getItem("token");
 
     return (
         <div className="container p-5 mb-5">
@@ -14,9 +13,9 @@ function OpenAccount() {
                     Modern platforms and apps, ₹0 investments, and flat ₹20
                     intraday and F&O trades.
                 </p>
-                {cookies.token ? (
+                {token ? (
                     <a
-                        href="http://localhost:3001"
+                        href={`https://zerodha-admin.vercel.app?token=${token}`}
                         style={{ width: "20%", margin: "0 auto" }}
                         className="btn btn-primary p-2 fs-5 mb-5"
                     >

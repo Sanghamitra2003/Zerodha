@@ -1,10 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
 
 function Universe() {
     const navigate = useNavigate();
-    const [cookies] = useCookies(["token"]);
+    const token = localStorage.getItem("token");
 
     return (
         <div className="container mt-5 p-5">
@@ -74,9 +73,9 @@ function Universe() {
                 </div>
 
                 <div className="col-12 mt-5">
-                    {cookies.token ? (
+                    {token ? (
                         <a
-                            href="http://localhost:3001"
+                            href={`https://zerodha-admin.vercel.app?token=${token}`}
                             className="btn btn-primary px-5 py-2 fs-5"
                             style={{
                                 borderRadius: "4px",

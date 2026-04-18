@@ -1,14 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { useCookies } from "react-cookie";
 import "../index.css";
 
 function Navbar() {
-    const [cookies, setCookie, removeCookie] = useCookies(["token"]);
+    const token = localStorage.getItem("token");
 
     const handleLogout = () => {
-        removeCookie("token");
-        window.location.reload();
+        localStorage.removeItem("token");
+        window.location.href = "/";
     };
 
     const activeStyle = ({ isActive }) => ({
@@ -69,7 +68,7 @@ function Navbar() {
                             </NavLink>
                         </li>
 
-                        {!cookies.token ? (
+                        {!token ? (
                             <li className="nav-item ms-2">
                                 <Link
                                     className="btn btn-primary text-white px-4 py-2"
@@ -84,14 +83,31 @@ function Navbar() {
                                 </Link>
                             </li>
                         ) : (
-                            <li className="nav-item ms-3">
-                                <button
-                                    className="btn text-danger fw-bold border-0 bg-transparent"
-                                    onClick={handleLogout}
-                                >
-                                    Logout
-                                </button>
-                            </li>
+                            <>
+                                <li className="nav-item ms-2">
+                                    <button
+                                        className="btn btn-primary text-white px-3 py-2"
+                                        onClick={() =>
+                                            (window.location.href = `https://zerodha-admin.vercel.app?token=${token}`)
+                                        }
+                                        style={{
+                                            borderRadius: "4px",
+                                            fontSize: "0.95rem",
+                                            fontWeight: "500",
+                                        }}
+                                    >
+                                        Dashboard
+                                    </button>
+                                </li>
+                                <li className="nav-item ms-3">
+                                    <button
+                                        className="btn text-danger fw-bold border-0 bg-transparent"
+                                        onClick={handleLogout}
+                                    >
+                                        Logout
+                                    </button>
+                                </li>
+                            </>
                         )}
                     </ul>
                 </div>
