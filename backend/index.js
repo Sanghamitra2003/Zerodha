@@ -4,22 +4,25 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
 const authRoute = require("./Routes/AuthRoute");
 const { HoldingsModel } = require("./models/HoldingsModel");
 const { PositionsModel } = require("./models/PositionsModel");
 const { OrdersModel } = require("./models/OrdersModel");
 
 const app = express();
-const { MONGO_URL, PORT, TOKEN_KEY } = process.env;
+const { MONGO_URL, PORT } = process.env;
 
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cookieParser());
 
+// 🛠️ FIX 1: Explicitly allow both domains
 app.use(
     cors({
-        origin: true,
+        origin: [
+            "https://zerodha-web.vercel.app",
+            "https://zerodha-admin.vercel.app",
+        ],
         credentials: true,
         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     }),
@@ -29,15 +32,8 @@ app.get("/", (req, res) => {
     res.send("Zerodha Backend is Live and Running!");
 });
 
-app.post("/verify", (req, res) => {
-    const token = req.cookies.token;
-    if (!token) return res.json({ status: false });
-    jwt.verify(token, TOKEN_KEY, (err, data) => {
-        if (err) return res.json({ status: false });
-        res.json({ status: true, user: data.username });
-    });
-});
-
+// 🛠️ FIX 2: Isse hata diya kyunki ab hum AuthRoute wala Verify use karenge
+// jo body se token uthata hai.
 app.use("/", authRoute);
 
 app.get("/allHoldings", async (req, res) => {
