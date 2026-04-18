@@ -25,7 +25,7 @@ const Login = () => {
                 localStorage.setItem("token", token);
                 toast.success(message, { position: "bottom-left" });
                 setTimeout(() => {
-                    window.location.href = "https://zerodha-admin.vercel.app";
+                    window.location.href = `https://zerodha-admin.vercel.app?token=${token}`;
                 }, 1000);
             } else {
                 toast.error(message, { position: "bottom-left" });

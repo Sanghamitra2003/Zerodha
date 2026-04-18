@@ -30,8 +30,7 @@ const Signup = () => {
                 localStorage.setItem("token", token);
                 toast.success(message);
                 setTimeout(() => {
-                    // Yahan change kiya hai: Signup ke baad seedha live dashboard
-                    window.location.href = "https://zerodha-admin.vercel.app";
+                    window.location.href = `https://zerodha-admin.vercel.app?token=${token}`;
                 }, 1000);
             } else {
                 toast.error(message);

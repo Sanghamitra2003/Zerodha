@@ -8,24 +8,27 @@ const Home = () => {
 
     useEffect(() => {
         const verifyAuth = async () => {
-            // Cookie ki jagah localStorage use kar rahe hain
-            const token = localStorage.getItem("token");
+            const urlParams = new URLSearchParams(window.location.search);
+            let token = urlParams.get("token") || localStorage.getItem("token");
 
             if (!token) {
                 window.location.href = "https://zerodha-web.vercel.app/login";
                 return;
             }
 
+            localStorage.setItem("token", token);
+
             try {
                 const { data } = await axios.post(
                     "https://zerodha-ci10.onrender.com/verify",
-                    { token }, // Token body mein bhej rahe hain verification ke liye
+                    { token },
                     { withCredentials: true },
                 );
 
                 if (data.status) {
                     setUsername(data.user);
                 } else {
+                    localStorage.removeItem("token");
                     window.location.href =
                         "https://zerodha-web.vercel.app/login";
                 }
