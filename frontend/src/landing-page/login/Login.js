@@ -37,7 +37,7 @@ const Login = () => {
 
     return (
         <div className="form_container">
-            <h2>Login to SwiftTrade</h2>
+            <h2>Login to Dashboard</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label>Email</label>
