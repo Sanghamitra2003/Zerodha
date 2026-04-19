@@ -4,7 +4,7 @@ Zerodha is a high-performance, full-stack trading application built using the **
 
 ## 🚀 Live Demo
 
-![Zerodha Demo](./demo.gif)
+![Zerodha Demo](./demo.gif.gif)
 
 - **Main Website:** [https://zerodha-web.vercel.app](https://zerodha-web.vercel.app)
 - **Trading Dashboard:** [https://zerodha-admin.vercel.app](https://zerodha-admin.vercel.app)
@@ -60,7 +60,7 @@ git clone https://github.com/Sanghamitra2003/Zerodha.git
 cd backend
 npm install
 
-# Create a .env file and add: MONGO_URL, PORT, and TOKEN_KEY
+## Create a .env file and add: MONGO_URL, PORT, and TOKEN_KEY
 
 npm start
 \`\`\`
