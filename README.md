@@ -4,7 +4,7 @@ Zerodha is a high-performance, full-stack trading application built using the **
 
 ## 🚀 Live Demo
 
-![Zerodh Demo](./demo.gif)
+![Zerodha Demo](./demo.gif)
 
 - **Main Website:** [https://zerodha-web.vercel.app](https://zerodha-web.vercel.app)
 - **Trading Dashboard:** [https://zerodha-admin.vercel.app](https://zerodha-admin.vercel.app)
@@ -76,8 +76,8 @@ npm start
 
 **Sangamitra Samal**
 
-- **GitHub:** [https://github.com/Sanghamitra2003]
-- **LinkedIn:** [www.linkedin.com/in/sanghamitra-samal-56836b236]
+- **GitHub:** [https://github.com/Sanghamitra2003](https://github.com/Sanghamitra2003)
+- **LinkedIn:** [Sangamitra Samal](https://www.linkedin.com/in/sanghamitra-samal-56836b236)
 
 🎓 **Recent Computer Science Graduate** actively seeking **Associate Software Engineer / New Grad** roles.
 💡 Skilled in the MERN stack, Data Structures & Algorithms, Python, and AI/Machine Learning.
